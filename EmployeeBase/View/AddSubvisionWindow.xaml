@@ -1,0 +1,44 @@
+﻿<Window x:Class="EmployeeBase.View.AddSubvisionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeBase.View"
+        mc:Ignorable="d"
+        Title="AddSubvisionWindow" Height="300" Width="300"
+        Name="AddNewSubvisionWind">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>        
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            
+            <TextBlock Text="Фамилия"/>
+            <TextBox Name="SurnameBlock" Text="{Binding SubvisionSurname}" TextChanged="TextBox_TextChanged"/>
+            <TextBlock Text="Имя"/>
+            <TextBox Name="NameBlock" Text="{Binding SubvisionName}"/>
+            <TextBlock Text="Отчество"/>
+            <TextBox Name="PatronymicBlock" Text="{Binding SubvisionPatronymic}"/>
+            <TextBlock Text="Дата рождения"/>
+            <TextBox Name="DOBBlock" Text="{Binding SubvisionDOB}"/>
+            <TextBlock Text="Пол"/>
+            <TextBox Name="GenderBlock" Text="{Binding SubvisionGender}"/>
+
+            <TextBlock Text="Подразделение"/>
+            <ComboBox ItemsSource="{Binding AllStaffs}"
+                      DisplayMemberPath="StaffName"
+                        SelectedItem="{Binding SubvisionStaff}"/>
+
+        </StackPanel>
+        <Button Grid.Row="1" Content="Добавить сотрудника"
+                CommandParameter="{Binding ElementName=AddNewSubvisionWind}"
+                Command="{Binding AddNewSubvision}"/>
+
+
+
+    </Grid>
+</Window>
